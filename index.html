@@ -10,15 +10,12 @@
   <style>
     :root {
       --bg: #07080f;
-      --bg-2: #10121c;
       --card: rgba(22, 25, 40, 0.72);
       --line: rgba(255, 255, 255, 0.08);
       --text: #f4f6ff;
       --muted: #9aa3c0;
       --gold: #ffd24a;
       --orange: #ff8a3d;
-      --cyan: #4de4ff;
-      --pink: #ff5d9a;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -94,10 +91,19 @@
       line-height: 1.6;
     }
 
+    .section-label {
+      margin: 8px 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
+      margin-bottom: 36px;
     }
 
     .tile {
@@ -177,17 +183,23 @@
       color: var(--accent, var(--gold));
     }
 
-    .tile:nth-child(1) { --accent: #7cff8a; --glow: rgba(124,255,138,0.22); }
-    .tile:nth-child(2) { --accent: #6ec8ff; --glow: rgba(110,200,255,0.22); }
-    .tile:nth-child(3) { --accent: #ffd24a; --glow: rgba(255,210,74,0.22); }
-    .tile:nth-child(4) { --accent: #ffb14a; --glow: rgba(255,177,74,0.22); }
-    .tile:nth-child(5) { --accent: #ff6b6b; --glow: rgba(255,107,107,0.22); }
-    .tile:nth-child(6) { --accent: #c9a6ff; --glow: rgba(201,166,255,0.22); }
-    .tile:nth-child(7) { --accent: #4de4ff; --glow: rgba(77,228,255,0.22); }
-    .tile:nth-child(8) { --accent: #ff8a3d; --glow: rgba(255,138,61,0.22); }
+    .mine:nth-child(1) { --accent: #7cff8a; --glow: rgba(124,255,138,0.22); }
+    .mine:nth-child(2) { --accent: #6ec8ff; --glow: rgba(110,200,255,0.22); }
+    .mine:nth-child(3) { --accent: #ffd24a; --glow: rgba(255,210,74,0.22); }
+    .mine:nth-child(4) { --accent: #c9a6ff; --glow: rgba(201,166,255,0.22); }
+    .mine:nth-child(5) { --accent: #4de4ff; --glow: rgba(77,228,255,0.22); }
+
+    .classic:nth-child(1) { --accent: #7cff8a; --glow: rgba(124,255,138,0.22); }
+    .classic:nth-child(2) { --accent: #6ec8ff; --glow: rgba(110,200,255,0.22); }
+    .classic:nth-child(3) { --accent: #ffd24a; --glow: rgba(255,210,74,0.22); }
+    .classic:nth-child(4) { --accent: #ffb14a; --glow: rgba(255,177,74,0.22); }
+    .classic:nth-child(5) { --accent: #ff6b6b; --glow: rgba(255,107,107,0.22); }
+    .classic:nth-child(6) { --accent: #c9a6ff; --glow: rgba(201,166,255,0.22); }
+    .classic:nth-child(7) { --accent: #4de4ff; --glow: rgba(77,228,255,0.22); }
+    .classic:nth-child(8) { --accent: #ff8a3d; --glow: rgba(255,138,61,0.22); }
 
     footer {
-      margin-top: 42px;
+      margin-top: 12px;
       text-align: center;
       color: #6f7896;
       font-size: 14px;
@@ -212,8 +224,62 @@
       <p class="subtitle">A handful of browser classics. Click a tile, play instantly, and chase a high score like it’s 1985 again.</p>
     </header>
 
+    <div class="section-label">Matthew’s games</div>
     <section class="grid">
-      <a class="tile" href="https://playsnake.org/" target="_blank" rel="noopener">
+      <a class="tile mine" href="https://www.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">🔤</div>
+        <div class="meta">
+          <div class="year">Word puzzle</div>
+          <h2>Wordle</h2>
+          <p>Guess the hidden word in six tries. Green means you nailed the letter.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile mine" href="https://connect4.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">🔴</div>
+        <div class="meta">
+          <div class="year">Strategy · 2 players</div>
+          <h2>Connect 4</h2>
+          <p>Drop discs and get four in a row before your opponent does.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile mine" href="https://checkers.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">⬛</div>
+        <div class="meta">
+          <div class="year">Board classic</div>
+          <h2>Checkers</h2>
+          <p>Jump, capture, and crown a king on the old-school 8×8 board.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile mine" href="https://othello.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">⚪</div>
+        <div class="meta">
+          <div class="year">Reversi</div>
+          <h2>Othello</h2>
+          <p>Flip the discs. Own the board. Outthink your opponent one move at a time.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile mine" href="https://othello2.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">🟢</div>
+        <div class="meta">
+          <div class="year">Reversi · Remix</div>
+          <h2>Othello 2</h2>
+          <p>A second take on Othello with the same flip-or-die energy.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+    </section>
+
+    <div class="section-label">More classics</div>
+    <section class="grid">
+      <a class="tile classic" href="https://playsnake.org/" target="_blank" rel="noopener">
         <div class="icon">🐍</div>
         <div class="meta">
           <div class="year">Classic · Keyboard</div>
@@ -223,7 +289,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://jstris.jezevec10.com/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://jstris.jezevec10.com/" target="_blank" rel="noopener">
         <div class="icon">🧱</div>
         <div class="meta">
           <div class="year">Puzzle · Arrow keys</div>
@@ -233,7 +299,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" rel="noopener">
         <div class="icon">🟡</div>
         <div class="meta">
           <div class="year">Arcade · 1980</div>
@@ -243,7 +309,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://classic.play2048.co/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://classic.play2048.co/" target="_blank" rel="noopener">
         <div class="icon">🔢</div>
         <div class="meta">
           <div class="year">Puzzle · Swipe / arrows</div>
@@ -253,7 +319,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://minesweeper.online/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://minesweeper.online/" target="_blank" rel="noopener">
         <div class="icon">💣</div>
         <div class="meta">
           <div class="year">Logic · Mouse</div>
@@ -263,7 +329,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://www.solitr.com/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://www.solitr.com/" target="_blank" rel="noopener">
         <div class="icon">🃏</div>
         <div class="meta">
           <div class="year">Cards · Klondike</div>
@@ -273,7 +339,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://slither.io/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://slither.io/" target="_blank" rel="noopener">
         <div class="icon">🌀</div>
         <div class="meta">
           <div class="year">Multiplayer · Mouse</div>
@@ -283,7 +349,7 @@
         </div>
       </a>
 
-      <a class="tile" href="https://flappybird.io/" target="_blank" rel="noopener">
+      <a class="tile classic" href="https://flappybird.io/" target="_blank" rel="noopener">
         <div class="icon">🐦</div>
         <div class="meta">
           <div class="year">Reflex · Tap / space</div>
