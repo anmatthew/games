@@ -140,6 +140,19 @@
       box-shadow: 0 18px 40px rgba(0,0,0,0.28), 0 0 0 1px color-mix(in srgb, var(--accent, var(--gold)) 25%, transparent);
     }
 
+    .tile.soon {
+      cursor: default;
+      opacity: 0.72;
+      --accent: #9aa3c0;
+      --glow: rgba(154, 163, 192, 0.16);
+    }
+
+    .tile.soon:hover {
+      transform: none;
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
     .icon {
       width: 58px;
       height: 58px;
@@ -188,6 +201,8 @@
     .mine:nth-child(3) { --accent: #ffd24a; --glow: rgba(255,210,74,0.22); }
     .mine:nth-child(4) { --accent: #c9a6ff; --glow: rgba(201,166,255,0.22); }
     .mine:nth-child(5) { --accent: #4de4ff; --glow: rgba(77,228,255,0.22); }
+    .mine:nth-child(6) { --accent: #ffb14a; --glow: rgba(255,177,74,0.22); }
+    .mine:nth-child(7) { --accent: #ff6b6b; --glow: rgba(255,107,107,0.22); }
 
     .classic:nth-child(1) { --accent: #7cff8a; --glow: rgba(124,255,138,0.22); }
     .classic:nth-child(2) { --accent: #6ec8ff; --glow: rgba(110,200,255,0.22); }
@@ -229,8 +244,8 @@
       <a class="tile mine" href="https://www.matthewan.com" target="_blank" rel="noopener">
         <div class="icon">🔤</div>
         <div class="meta">
-          <div class="year">Wordle </div>
-          <h2>AK Wordle</h2>
+          <div class="year">Word puzzle</div>
+          <h2>Wordle</h2>
           <p>Guess the hidden word in six tries. Green means you nailed the letter.</p>
           <div class="play">Play now →</div>
         </div>
@@ -239,8 +254,8 @@
       <a class="tile mine" href="https://connect4.matthewan.com" target="_blank" rel="noopener">
         <div class="icon">🔴</div>
         <div class="meta">
-          <div class="year">Strategy </div>
-          <h2>Connect Four</h2>
+          <div class="year">Strategy · 2 players</div>
+          <h2>Connect 4</h2>
           <p>Drop discs and get four in a row before your opponent does.</p>
           <div class="play">Play now →</div>
         </div>
@@ -259,7 +274,7 @@
       <a class="tile mine" href="https://othello.matthewan.com" target="_blank" rel="noopener">
         <div class="icon">⚪</div>
         <div class="meta">
-          <div class="year">Othello</div>
+          <div class="year">Reversi</div>
           <h2>Othello</h2>
           <p>Flip the discs. Own the board. Outthink your opponent one move at a time.</p>
           <div class="play">Play now →</div>
@@ -269,12 +284,42 @@
       <a class="tile mine" href="https://othello2.matthewan.com" target="_blank" rel="noopener">
         <div class="icon">🟢</div>
         <div class="meta">
-          <div class="year">Othello Shareble </div>
+          <div class="year">Reversi · Remix</div>
           <h2>Othello 2</h2>
           <p>A second take on Othello with the same flip-or-die energy.</p>
           <div class="play">Play now →</div>
         </div>
       </a>
+
+      <a class="tile mine" href="https://chess.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">♟️</div>
+        <div class="meta">
+          <div class="year">Board classic</div>
+          <h2>Chess</h2>
+          <p>Kings, queens, and bad opening moves. The original strategy game.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile mine" href="https://tetris.matthewan.com" target="_blank" rel="noopener">
+        <div class="icon">🧱</div>
+        <div class="meta">
+          <div class="year">Puzzle · Falling blocks</div>
+          <h2>Tetris</h2>
+          <p>Stack the tetrominoes, clear lines, and don’t let the pile hit the top.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <div class="tile soon" aria-disabled="true">
+        <div class="icon">🛠️</div>
+        <div class="meta">
+          <div class="year">In progress</div>
+          <h2>Coming Soon</h2>
+          <p>Working on more. Another game is on the way.</p>
+          <div class="play">More coming soon</div>
+        </div>
+      </div>
     </section>
 
     <div class="section-label">More classics</div>
@@ -285,16 +330,6 @@
           <div class="year">Classic · Keyboard</div>
           <h2>Snake</h2>
           <p>Eat, grow, don’t bite your own tail. The original time-killer.</p>
-          <div class="play">Play now →</div>
-        </div>
-      </a>
-
-      <a class="tile classic" href="https://jstris.jezevec10.com/" target="_blank" rel="noopener">
-        <div class="icon">🧱</div>
-        <div class="meta">
-          <div class="year">Puzzle · Arrow keys</div>
-          <h2>Tetris</h2>
-          <p>Stack falling blocks, clear lines, and keep the stack from topping out.</p>
           <div class="play">Play now →</div>
         </div>
       </a>
