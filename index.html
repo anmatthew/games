@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthew's Old School Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07080f;
+      --bg-2: #10121c;
+      --card: rgba(22, 25, 40, 0.72);
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f4f6ff;
+      --muted: #9aa3c0;
+      --gold: #ffd24a;
+      --orange: #ff8a3d;
+      --cyan: #4de4ff;
+      --pink: #ff5d9a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(255, 210, 74, 0.12), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(77, 228, 255, 0.10), transparent 50%),
+        radial-gradient(800px 500px at 50% 120%, rgba(255, 93, 154, 0.08), transparent 50%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 100% 4px;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(18px, 3.4vw, 34px);
+      line-height: 1.45;
+      background: linear-gradient(90deg, var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 28px rgba(255, 210, 74, 0.18);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+      padding: 22px;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow, rgba(255,210,74,0.22)), transparent 68%);
+      pointer-events: none;
+    }
+
+    .tile:hover {
+      transform: translateY(-8px);
+      border-color: color-mix(in srgb, var(--accent, var(--gold)) 55%, transparent);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28), 0 0 0 1px color-mix(in srgb, var(--accent, var(--gold)) 25%, transparent);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      font-size: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+    }
+
+    .meta { margin-top: 28px; }
+
+    .year {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .tile h2 {
+      font-size: 24px;
+      font-weight: 750;
+      margin-bottom: 8px;
+    }
+
+    .tile p {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .play {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent, var(--gold));
+    }
+
+    .tile:nth-child(1) { --accent: #7cff8a; --glow: rgba(124,255,138,0.22); }
+    .tile:nth-child(2) { --accent: #6ec8ff; --glow: rgba(110,200,255,0.22); }
+    .tile:nth-child(3) { --accent: #ffd24a; --glow: rgba(255,210,74,0.22); }
+    .tile:nth-child(4) { --accent: #ffb14a; --glow: rgba(255,177,74,0.22); }
+    .tile:nth-child(5) { --accent: #ff6b6b; --glow: rgba(255,107,107,0.22); }
+    .tile:nth-child(6) { --accent: #c9a6ff; --glow: rgba(201,166,255,0.22); }
+    .tile:nth-child(7) { --accent: #4de4ff; --glow: rgba(77,228,255,0.22); }
+    .tile:nth-child(8) { --accent: #ff8a3d; --glow: rgba(255,138,61,0.22); }
+
+    footer {
+      margin-top: 42px;
+      text-align: center;
+      color: #6f7896;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { padding-top: 28px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Arcade · Instant play · No download</div>
+      <h1>Matthew's Old School Games</h1>
+      <p class="subtitle">A handful of browser classics. Click a tile, play instantly, and chase a high score like it’s 1985 again.</p>
+    </header>
+
+    <section class="grid">
+      <a class="tile" href="https://playsnake.org/" target="_blank" rel="noopener">
+        <div class="icon">🐍</div>
+        <div class="meta">
+          <div class="year">Classic · Keyboard</div>
+          <h2>Snake</h2>
+          <p>Eat, grow, don’t bite your own tail. The original time-killer.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://jstris.jezevec10.com/" target="_blank" rel="noopener">
+        <div class="icon">🧱</div>
+        <div class="meta">
+          <div class="year">Puzzle · Arrow keys</div>
+          <h2>Tetris</h2>
+          <p>Stack falling blocks, clear lines, and keep the stack from topping out.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" rel="noopener">
+        <div class="icon">🟡</div>
+        <div class="meta">
+          <div class="year">Arcade · 1980</div>
+          <h2>Pac-Man</h2>
+          <p>Chomp dots, dodge ghosts, grab a power pellet when things get spicy.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://classic.play2048.co/" target="_blank" rel="noopener">
+        <div class="icon">🔢</div>
+        <div class="meta">
+          <div class="year">Puzzle · Swipe / arrows</div>
+          <h2>2048</h2>
+          <p>Slide matching tiles together until you hit the legendary 2048.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://minesweeper.online/" target="_blank" rel="noopener">
+        <div class="icon">💣</div>
+        <div class="meta">
+          <div class="year">Logic · Mouse</div>
+          <h2>Minesweeper</h2>
+          <p>Clear the board without detonating a mine. One wrong click ends it.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://www.solitr.com/" target="_blank" rel="noopener">
+        <div class="icon">🃏</div>
+        <div class="meta">
+          <div class="year">Cards · Klondike</div>
+          <h2>Solitaire</h2>
+          <p>The desktop classic. Build your foundations from Ace to King.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://slither.io/" target="_blank" rel="noopener">
+        <div class="icon">🌀</div>
+        <div class="meta">
+          <div class="year">Multiplayer · Mouse</div>
+          <h2>Slither.io</h2>
+          <p>A massive online snake pit. Grow huge, cut people off, survive.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="https://flappybird.io/" target="_blank" rel="noopener">
+        <div class="icon">🐦</div>
+        <div class="meta">
+          <div class="year">Reflex · Tap / space</div>
+          <h2>Flappy Bird</h2>
+          <p>One flap at a time through the pipes. Simple, brutal, addictive.</p>
+          <div class="play">Play now →</div>
+        </div>
+      </a>
+    </section>
+
+    <footer>
+      Matthew's Old School Games · Free browser classics · Opens in a new tab
+    </footer>
+  </div>
+</body>
+</html>
